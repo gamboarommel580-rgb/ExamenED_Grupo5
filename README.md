@@ -86,7 +86,7 @@ o simplemente `compilar_y_ejecutar.bat`.
 
 La opción **10** del menú ejecuta 10 casos automáticos (29 verificaciones). El detalle y los pasos manuales están en [`docs/CASOS_PRUEBA.md`](docs/CASOS_PRUEBA.md). Las capturas de ejecución en VS Code deben incorporarse a `docs/capturas/` antes de la entrega.
 
-Para verificar directamente el módulo de Gabriel después de compilar todo el proyecto, ejecutar `java -cp bin datos.PruebasGabriel` (24 verificaciones de cola, pila, espera y deshacer).
+Para verificar directamente el módulo de Gabriel después de compilar todo el proyecto, ejecutar `java -cp bin datos.PruebasGabriel` (26 verificaciones de cola, pila, espera y deshacer).
 
 ## Evidencia de colaboración
 

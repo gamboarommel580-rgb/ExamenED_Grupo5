@@ -36,6 +36,16 @@ public final class PruebasGabriel {
         cola.encolar("nuevo");
         comprobar("nuevo".equals(cola.desencolar()), "reutilizar cola vacia");
 
+        Cola<String> colaConCallback = new Cola<>();
+        colaConCallback.encolar("viejo");
+        int retirados = colaConCallback.eliminarSi("viejo"::equals,
+                descartado -> colaConCallback.encolar("reemplazo"));
+        comprobar(retirados == 1 && colaConCallback.tamanio() == 1
+                && "reemplazo".equals(colaConCallback.consultarFrente()),
+                "eliminar mantiene enlaces si el callback encola");
+        comprobar("reemplazo".equals(colaConCallback.desencolar())
+                && colaConCallback.estaVacia(), "cola consistente tras el callback");
+
         Pila<Integer> pila = new Pila<>();
         comprobar(pila.desapilar() == null, "desapilar vacia");
         pila.apilar(1);

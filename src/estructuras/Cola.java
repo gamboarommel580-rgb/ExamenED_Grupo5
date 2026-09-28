@@ -93,7 +93,7 @@ public class Cola<T> {
         return null;
     }
 
-    /** Elimina las coincidencias y comunica cada dato retirado. O(n). */
+    /** Elimina las coincidencias y luego comunica cada dato retirado. O(n). */
     public int eliminarSi(Predicate<T> criterio, Consumer<T> alEliminar) {
         if (criterio == null || alEliminar == null) {
             throw new IllegalArgumentException("Criterio y accion son obligatorios.");
@@ -104,12 +104,13 @@ public class Cola<T> {
         while (actual != null) {
             Nodo<T> siguiente = actual.siguiente;
             if (criterio.test(actual.dato)) {
-                alEliminar.accept(actual.dato);
                 if (anterior == null) frente = siguiente;
                 else anterior.siguiente = siguiente;
                 if (actual == fin) fin = anterior;
                 tamanio--;
                 eliminados++;
+                // El callback ve la cola ya consistente, incluso si encola otro dato.
+                alEliminar.accept(actual.dato);
             } else {
                 anterior = actual;
             }
