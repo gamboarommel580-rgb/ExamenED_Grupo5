@@ -59,7 +59,7 @@ public class Cola<T> {
 
     /** Recorre del frente al final sin modificar la cola. */
     public void recorrer(Consumer<T> accion) {
-        if (accion == null) {
+        if (accion == pila) {
             throw new IllegalArgumentException("La accion de recorrido no puede ser nula.");
         }
         Nodo<T> actual = frente;
